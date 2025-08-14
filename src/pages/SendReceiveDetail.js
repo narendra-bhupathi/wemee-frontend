@@ -82,9 +82,7 @@ const SendReceiveDetail = () => {
       setUserBidsLoading(true);
       setUserBidsError(null);
       try {
-        const res = await fetch('/bids/user', {
-          headers: { 'Authorization': `Bearer ${getToken()}` }
-        });
+        const res = await fetch('/bids/user', { headers: { 'Authorization': `Bearer ${getToken()}` } });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || data.message || 'Failed to fetch your bids');
         setUserBids(data.data || []);
@@ -104,11 +102,7 @@ const SendReceiveDetail = () => {
     setBidStatus('');
     setBidLoading(true);
     try {
-      const res = await fetch(`/bids/${traveller.id}`, {
-        headers: {
-          'Authorization': `Bearer ${getToken()}`
-        }
-      });
+      const res = await fetch(`/bids/${traveller.id}`, { headers: { 'Authorization': `Bearer ${getToken()}` } });
       const data = await res.json();
       if (data.success) {
         setBids(data.data);

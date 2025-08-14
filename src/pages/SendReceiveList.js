@@ -8,6 +8,7 @@ import {
   CircularProgress
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { apiFetch } from '../utils/auth';
 import CommonLayout, { CommonCard, CommonButton, CommonSubtitle, BackHeader } from '../components/CommonLayout';
 import { getUsernameFromToken } from '../utils/auth';
 
@@ -42,7 +43,7 @@ const SendReceiveList = ({ user }) => {
     try {
       setLoading(true);
           const query = username ? `?username=${encodeURIComponent(username)}` : '';
-          const response = await fetch(`/send-receive/by-username${query}`);
+      const response = await apiFetch(`/send-receive/by-username${query}`);
       const data = await response.json();
       
       if (!response.ok) {

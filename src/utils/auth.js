@@ -87,7 +87,6 @@ export const authHeader = () => {
 
 export const apiFetch = async (url, options = {}) => {
   const headers = { 'Content-Type': 'application/json', ...options.headers, ...authHeader() };
-  
   try {
     const response = await fetch(url, { ...options, headers });
     

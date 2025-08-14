@@ -33,11 +33,7 @@ const TripBids = () => {
     const fetchBids = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/bids/${trip.id}`, {
-          headers: {
-            'Authorization': `Bearer ${getToken()}`
-          }
-        });
+        const res = await fetch(`/bids/${trip.id}`, { headers: { 'Authorization': `Bearer ${getToken()}` } });
         const data = await res.json();
         if (data.success) {
           setBids(data.data);
@@ -80,11 +76,7 @@ const TripBids = () => {
       if (data.success) {
         setActionStatus(`Bid ${action}ed!`);
         // Refresh bids
-        const res2 = await fetch(`/bids/${trip.id}`, {
-          headers: {
-            'Authorization': `Bearer ${getToken()}`
-          }
-        });
+        const res2 = await fetch(`/bids/${trip.id}`, { headers: { 'Authorization': `Bearer ${getToken()}` } });
         const data2 = await res2.json();
         setBids(data2.data);
       } else {

@@ -45,11 +45,7 @@ const TravellersList = () => {
     setBidStatus('');
     setBidLoading(true);
     try {
-      const res = await fetch(`/bids/${trip.id}`, {
-        headers: {
-          'Authorization': `Bearer ${getToken()}`
-        }
-      });
+      const res = await fetch(`/bids/${trip.id}`, { headers: { 'Authorization': `Bearer ${getToken()}` } });
       const data = await res.json();
       if (data.success) {
         setBids(data.data);
@@ -102,11 +98,7 @@ const TravellersList = () => {
         // Refresh bids
         openBidDialog(bidDialog.trip);
         // Update wallet balance
-        fetch('/bids/user/balance', {
-          headers: {
-            'Authorization': `Bearer ${getToken()}`
-          }
-        })
+        fetch('/bids/user/balance', { headers: { 'Authorization': `Bearer ${getToken()}` } })
           .then(res => res.json())
           .then(data => {
             if (data.success) {
